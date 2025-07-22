@@ -20,7 +20,7 @@ if (!isset($_SESSION['administrador'])) {
 include("conexion.php");
 include("obtener-categorias.php");
 $id_imagen = $_REQUEST['id_imagen'];
-$query = "select * from imagenes where id_imagen = '$id_imagen'";
+$query = "SELECT i.*, c.nombre as categoria FROM imagenes i INNER JOIN categorias c ON i.id_categoria = c.id_categoria WHERE i.id_imagen = '$id_imagen'";
 $resultado = $conexion->query($query);
 $row = $resultado->fetch_assoc();
 ?>
@@ -30,9 +30,12 @@ $row = $resultado->fetch_assoc();
             <label>Nueva categoria</label>
             <select name="categoria" required class="selector-categoria">
                 <?php
+                // Reiniciar el puntero del resultado de categorías
+                $categorias->data_seek(0);
                 while ($categoria = $categorias->fetch_assoc()) {
+                    $selected = ($categoria['nombre'] == $row['categoria']) ? 'selected' : '';
                 ?>
-                    <option value="<?php echo $categoria['nombre'] ?>"><?php echo $categoria['nombre'] ?></option>
+                    <option value="<?php echo $categoria['nombre'] ?>" <?php echo $selected ?>><?php echo $categoria['nombre'] ?></option>
                 <?php
                 }
                 ?>
