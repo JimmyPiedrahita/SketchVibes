@@ -1,5 +1,11 @@
 -- Nombre de la base de datos: bd_sketchvibes
 
+-- Eliminar tablas existentes si existen (en orden inverso debido a las claves foráneas)
+DROP TABLE IF EXISTS imagenes;
+DROP TABLE IF EXISTS administradores;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS categorias;
+
 CREATE TABLE categorias (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) UNIQUE
