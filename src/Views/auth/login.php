@@ -13,7 +13,7 @@ ob_start();
                 <div class="auth-card">
                     <div class="text-center mb-4">
                         <a href="/SketchVibes/public/index.php">
-                            <img src="/SketchVibes/public/img/Logo.png" alt="SketchVibes" class="auth-logo">
+                            <img src="img/Logo.png" alt="SketchVibes" class="auth-logo">
                         </a>
                         <h2 class="mt-3">Iniciar Sesión</h2>
                     </div>
@@ -98,5 +98,5 @@ $additionalCSS = '
 </style>
 ';
 
-include __DIR__ . '/../src/Views/layouts/main.php';
+include __DIR__ . '/../layouts/main.php';
 ?>
