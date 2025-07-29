@@ -5,6 +5,45 @@ $title = 'SketchVibes - Galería de Arte Digital';
 $bodyClass = 'landing-page';
 $showNavbar = false;
 
+$additionalCSS = '
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+.landing-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.hero-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.logo-hero {
+    max-width: 200px;
+    height: auto;
+}
+
+.hero-buttons .btn {
+    margin: 0.5rem;
+}
+
+.features-section {
+    background: white;
+}
+
+.feature-box {
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+</style>
+';
+
 ob_start();
 ?>
 
@@ -12,7 +51,7 @@ ob_start();
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-lg-8">
-                <img src="/SketchVibes/public/img/Logo.png" alt="SketchVibes" class="logo-hero mb-4">
+                <img src="img/Logo.png" alt="SketchVibes" class="logo-hero mb-4">
                 <h1 class="display-4 text-white mb-4">SketchVibes</h1>
                 <p class="lead text-light mb-5">
                     Explora nuestro mundo de creatividad y arte. Descubre dibujos únicos y cautivadores 
@@ -74,45 +113,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-
-$additionalCSS = '
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-.landing-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-}
-
-.hero-section {
-    padding: 100px 0;
-    text-align: center;
-}
-
-.logo-hero {
-    max-width: 200px;
-    height: auto;
-}
-
-.hero-buttons .btn {
-    margin: 0.5rem;
-}
-
-.features-section {
-    background: white;
-}
-
-.feature-box {
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.feature-box:hover {
-    transform: translateY(-5px);
-}
-</style>
-';
-
 include __DIR__ . '/../src/Views/layouts/main.php';
 ?>

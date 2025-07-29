@@ -295,5 +295,5 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 ';
 
-include __DIR__ . '/../src/Views/layouts/main.php';
+include __DIR__ . '/../layouts/main.php';
 ?>

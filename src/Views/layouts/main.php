@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? 'SketchVibes' ?></title>
-    <link rel="icon" href="/SketchVibes/img/logo.ico">
+    <link rel="icon" href="img/logo.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/SketchVibes/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <?= $additionalCSS ?? '' ?>
 </head>
 <body class="<?= $bodyClass ?? '' ?>">
@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="/SketchVibes/public/index.php">
-                    <img src="/SketchVibes/img/Logo.png" alt="SketchVibes" height="40">
+                    <img src="img/Logo.png" alt="SketchVibes" height="40">
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -64,7 +64,7 @@
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/SketchVibes/scripts.js"></script>
+    <script src="js/scripts.js"></script>
     <?= $additionalJS ?? '' ?>
 </body>
 </html>

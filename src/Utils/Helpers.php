@@ -6,7 +6,9 @@ class FlashMessages {
      * Mostrar y limpiar mensajes flash
      */
     public static function display() {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         
         if (isset($_SESSION['flash_messages']) && !empty($_SESSION['flash_messages'])) {
             $messages = $_SESSION['flash_messages'];

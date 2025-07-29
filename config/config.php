@@ -20,11 +20,31 @@ define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
 
 // Autoloader simple
 spl_autoload_register(function ($class) {
-    $file = __DIR__ . '/../src/' . str_replace('\\', '/', $class) . '.php';
-    if (file_exists($file)) {
-        require_once $file;
+    // Primero intentar con la estructura de carpetas
+    $paths = [
+        __DIR__ . '/../src/Controllers/' . $class . '.php',
+        __DIR__ . '/../src/Models/' . $class . '.php',
+        __DIR__ . '/../src/Utils/' . $class . '.php',
+        __DIR__ . '/../src/' . str_replace('\\', '/', $class) . '.php'
+    ];
+    
+    foreach ($paths as $file) {
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
     }
 });
 
-// Incluir base de datos
+// Incluir archivos necesarios
 require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/../src/Utils/Helpers.php';
+
+// Incluir controladores principales
+require_once __DIR__ . '/../src/Controllers/AuthController.php';
+require_once __DIR__ . '/../src/Controllers/ImageController.php';
+
+// Incluir modelos principales
+require_once __DIR__ . '/../src/Models/User.php';
+require_once __DIR__ . '/../src/Models/Image.php';
+require_once __DIR__ . '/../src/Models/Category.php';
