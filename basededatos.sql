@@ -36,5 +36,5 @@ INSERT INTO categorias(nombre) VALUES ('tecnico');
 INSERT INTO categorias(nombre) VALUES ('geometrico');
 INSERT INTO categorias(nombre) VALUES ('animado');
 INSERT INTO categorias(nombre) VALUES ('topografico');
-
-INSERT INTO administradores(email, password) VALUES ('admin@gmail.com', '12345');
+-- Password admin: 12345
+INSERT INTO administradores(email, password) VALUES ('admin@gmail.com', '$2y$10$HNL5H/8SMwdhJeuiqB3dvuc/epagOP19ITnyFLMJorx9WpWraV7FC');
