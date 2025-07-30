@@ -11,10 +11,10 @@
 <body class="<?= $bodyClass ?? '' ?>">
     
     <?php if (isset($showNavbar) && $showNavbar): ?>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
             <div class="container">
                 <a class="navbar-brand" href="/SketchVibes/public/index.php">
-                    <img src="img/Logo.png" alt="SketchVibes" height="40">
+                    <img src="img/Logo.svg" alt="SketchVibes" height="40">
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

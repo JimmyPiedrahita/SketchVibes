@@ -1,6 +1,6 @@
 <?php
 $title = 'Registrarse - SketchVibes';
-$bodyClass = 'bg-primary min-vh-100 d-flex align-items-center';
+$bodyClass = 'bg-light min-vh-100 d-flex align-items-center';
 $showNavbar = false;
 
 ob_start();
@@ -13,7 +13,7 @@ ob_start();
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
                         <a href="/SketchVibes/public/index.php">
-                            <img src="img/Logo.png" alt="SketchVibes" class="img-fluid" style="max-width: 120px;">
+                            <img src="img/Logo.svg" alt="SketchVibes" class="img-fluid" style="max-width: 120px;">
                         </a>
                         <h2 class="mt-3 text-primary">Crear Cuenta</h2>
                     </div>
