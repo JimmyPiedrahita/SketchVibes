@@ -12,7 +12,7 @@
 - 🛡️ **Protección contra vulnerabilidades** (SQL injection, XSS, CSRF)
 - 📱 **Diseño responsive** con Bootstrap 5
 
-## 🏗️ Arquitectura Mejorada
+## 🏗️ Arquitectura
 
 ### Estructura MVC
 ```
@@ -32,8 +32,6 @@ SketchVibes/
 │   └── scripts.js      # JavaScript
 └── database_updated.sql # Base de datos mejorada
 ```
-
-## 🚀 Mejoras Implementadas
 
 ### Seguridad
 - ✅ **PDO con prepared statements** (anti SQL injection)
