@@ -1,4 +1,4 @@
-# 🎨 SketchVibes - Galería de Dibujos (Versión Mejorada)
+# 🎨 SketchVibes - Galería de Dibujos
 
 **SketchVibes** es una aplicación web moderna para gestionar y mostrar una galería de dibujos, construida con PHP siguiendo el patrón MVC y las mejores prácticas de desarrollo.
 
@@ -30,7 +30,6 @@ SketchVibes/
 │   ├── img/            # Imágenes estáticas
 │   ├── *.php           # Puntos de entrada
 │   └── scripts.js      # JavaScript
-├── uploads/             # Archivos subidos
 └── database_updated.sql # Base de datos mejorada
 ```
 
@@ -77,23 +76,16 @@ SketchVibes/
 
 2. **Configurar la base de datos**
    - Crear base de datos `bd_sketchvibes`
-   - Importar `database_updated.sql`
-   ```sql
-   CREATE DATABASE bd_sketchvibes;
-   USE bd_sketchvibes;
-   SOURCE database_updated.sql;
-   ```
+   - Importar `basededatos.sql`
 
 3. **Configurar credenciales**
    - Editar `config/database.php` si es necesario
-   - Verificar permisos de la carpeta `uploads/`
 
 4. **Acceder a la aplicación**
    - Navegar a `http://localhost/SketchVibes/public/`
 
 ### Credenciales por defecto
 - **Admin**: admin@gmail.com / 12345
-- **Usuario**: user@gmail.com / password123
 
 ## 📋 Funcionalidades
 
@@ -108,7 +100,6 @@ SketchVibes/
 - Subir nuevas imágenes
 - Editar imágenes existentes
 - Eliminar imágenes
-- Gestionar categorías
 
 ## 🔧 Tecnologías Utilizadas
 
@@ -139,46 +130,3 @@ SketchVibes/
 - Validación de tipos de archivo
 - Límites de tamaño de archivo
 - Sesiones seguras configuradas
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
-
-## 👥 Autores
-
-- **Desarrollador Original** - Código base inicial
-- **Mejoras y Reestructuración** - GitHub Copilot
-
-## 🐛 Reporte de Bugs
-
-Si encuentras algún bug, por favor:
-1. Revisa si ya fue reportado en Issues
-2. Crea un nuevo Issue con:
-   - Descripción del problema
-   - Pasos para reproducir
-   - Comportamiento esperado vs actual
-   - Screenshots si aplica
-
-## 🚀 Roadmap
-
-### Próximas mejoras planeadas
-- [ ] Sistema de usuarios con perfiles
-- [ ] Comentarios en imágenes
-- [ ] Tags personalizados
-- [ ] API REST
-- [ ] Panel de administración avanzado
-- [ ] Optimización de imágenes automática
-- [ ] Sistema de backups
-- [ ] Tests unitarios
-
----
-
-⭐ ¡Si te gusta el proyecto, dale una estrella en GitHub!
