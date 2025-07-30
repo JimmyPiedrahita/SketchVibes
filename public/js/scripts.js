@@ -7,24 +7,57 @@
 document.addEventListener('DOMContentLoaded', function() {
     initImageModal();
     initCategoryFilters();
-    initDownloadButtons();
 });
 
 /**
  * Inicializar modal de imágenes
  */
 function initImageModal() {
-    const modal = document.getElementById('imageModal');
-    if (!modal) return;
+    const modalElement = document.getElementById('imageModal');
+    if (!modalElement) return;
 
-    const modalImage = document.getElementById('modal-image');
-    const images = document.querySelectorAll('.gallery-image');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+    const modalEditBtn = document.getElementById('modalEditBtn');
+    const modalDeleteBtn = document.getElementById('modalDeleteBtn');
+    
+    const images = document.querySelectorAll('.lightbox-trigger');
     
     images.forEach(img => {
         img.addEventListener('click', function() {
-            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
-            modalImage.src = this.src;
-            modalImage.alt = this.alt;
+            const imageId = this.getAttribute('data-image-id');
+            const imageSrc = this.getAttribute('data-image-src');
+            const imageTitle = this.getAttribute('data-image-title');
+            const imageDescription = this.getAttribute('data-image-description');
+            const imageCategory = this.getAttribute('data-image-category');
+            
+            // Actualizar contenido del modal
+            modalImage.src = imageSrc;
+            modalImage.alt = imageTitle;
+            modalTitle.textContent = imageTitle;
+            modalDescription.textContent = imageDescription;
+            modalCategory.textContent = imageCategory;
+            
+            // Actualizar enlaces
+            modalDownloadBtn.href = "/SketchVibes/public/download-image.php?id=" + imageId;
+            
+            if (modalEditBtn) {
+                modalEditBtn.href = "/SketchVibes/public/edit-image.php?id=" + imageId;
+            }
+            
+            if (modalDeleteBtn) {
+                modalDeleteBtn.onclick = function() {
+                    if (confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
+                        window.location.href = "/SketchVibes/public/delete-image.php?id=" + imageId;
+                    }
+                };
+            }
+            
+            // Mostrar modal usando Bootstrap
+            const modal = new bootstrap.Modal(modalElement);
             modal.show();
         });
     });
@@ -45,64 +78,17 @@ function initCategoryFilters() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Filtrar elementos
+            // Filtrar elementos con animación suave
             galleryItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                const category = item.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
                     item.style.display = 'block';
+                    item.classList.remove('d-none');
                 } else {
-                    item.style.display = 'none';
+                    item.classList.add('d-none');
                 }
             });
         });
-    });
-}
-
-/**
- * Inicializar botones de descarga
- */
-function initDownloadButtons() {
-    const downloadButtons = document.querySelectorAll('.download-btn');
-    
-    downloadButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const imageId = this.getAttribute('data-image-id');
-            downloadImage(imageId);
-        });
-    });
-}
-
-/**
- * Descargar imagen
- */
-function downloadImage(imageId) {
-    fetch('/SketchVibes/public/download-image.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'id_imagen=' + encodeURIComponent(imageId)
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.blob();
-        }
-        throw new Error('Error al descargar la imagen');
-    })
-    .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = 'imagen_' + imageId + '.jpg';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error al descargar la imagen');
     });
 }
 

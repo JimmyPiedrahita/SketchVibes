@@ -1,21 +1,21 @@
 <?php
 $title = 'Iniciar Sesión - SketchVibes';
-$bodyClass = 'auth-page';
+$bodyClass = 'bg-primary min-vh-100 d-flex align-items-center';
 $showNavbar = false;
 
 ob_start();
 ?>
 
-<div class="auth-container">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="auth-card">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow">
+                <div class="card-body p-5">
                     <div class="text-center mb-4">
                         <a href="/SketchVibes/public/index.php">
-                            <img src="img/Logo.png" alt="SketchVibes" class="auth-logo">
+                            <img src="img/Logo.png" alt="SketchVibes" class="img-fluid" style="max-width: 120px;">
                         </a>
-                        <h2 class="mt-3">Iniciar Sesión</h2>
+                        <h2 class="mt-3 text-primary">Iniciar Sesión</h2>
                     </div>
                     
                     <form method="POST" action="">
@@ -23,20 +23,24 @@ ob_start();
                         
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control form-control-lg" id="email" name="email" required>
                         </div>
                         
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control form-control-lg" id="password" name="password" required>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary w-100 mb-3">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                        </button>
                     </form>
                     
                     <div class="text-center">
-                        <p>¿No tienes cuenta? <a href="/SketchVibes/public/register.php" class="text-decoration-none">Regístrate aquí</a></p>
-                        <a href="/SketchVibes/public/index.php" class="text-muted">← Volver al inicio</a>
+                        <p class="mb-2">¿No tienes cuenta? <a href="/SketchVibes/public/register.php" class="text-decoration-none">Regístrate aquí</a></p>
+                        <a href="/SketchVibes/public/index.php" class="text-muted">
+                            <i class="fas fa-arrow-left me-1"></i>Volver al inicio
+                        </a>
                     </div>
                 </div>
             </div>
@@ -46,57 +50,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-
-$additionalCSS = '
-<style>
-.auth-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.auth-container {
-    padding: 2rem 0;
-}
-
-.auth-card {
-    background: white;
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.auth-logo {
-    max-width: 120px;
-    height: auto;
-}
-
-.form-control {
-    border-radius: 10px;
-    padding: 12px 15px;
-    border: 2px solid #e9ecef;
-    transition: border-color 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 10px;
-    padding: 12px;
-    font-weight: 500;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-}
-</style>
-';
-
 include __DIR__ . '/../layouts/main.php';
 ?>
