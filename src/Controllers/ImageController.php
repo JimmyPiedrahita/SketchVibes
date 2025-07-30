@@ -218,7 +218,9 @@ class ImageController {
      * Verificar autenticación
      */
     private function requireAuth() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['user_id'])) {
             header('Location: /SketchVibes/public/login.php');
             exit;
@@ -248,7 +250,9 @@ class ImageController {
      * Establecer mensaje flash
      */
     private function setFlashMessage($type, $message) {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['flash_messages'][] = ['type' => $type, 'message' => $message];
     }
 }

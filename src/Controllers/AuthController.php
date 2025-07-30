@@ -71,7 +71,9 @@ class AuthController {
      * Cerrar sesión
      */
     public function logout() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         session_destroy();
         header('Location: /SketchVibes/public/index.php');
         exit;
@@ -81,7 +83,9 @@ class AuthController {
      * Verificar si está autenticado
      */
     public function requireAuth() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['user_id'])) {
             header('Location: /SketchVibes/public/login.php');
             exit;
@@ -103,7 +107,9 @@ class AuthController {
      * Iniciar sesión
      */
     private function startSession($user, $isAdmin) {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         session_regenerate_id(true);
         
         $_SESSION['user_id'] = $user['id'];
@@ -148,7 +154,9 @@ class AuthController {
      * Establecer mensaje flash
      */
     private function setFlashMessage($type, $message) {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['flash_messages'][] = ['type' => $type, 'message' => $message];
     }
     

@@ -28,7 +28,9 @@ class FlashMessages {
      * Agregar mensaje flash
      */
     public static function add($type, $message) {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['flash_messages'][] = ['type' => $type, 'message' => $message];
     }
 }
@@ -39,7 +41,9 @@ class SecurityHelper {
      * Generar token CSRF
      */
     public static function generateCSRFToken() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         }
@@ -50,7 +54,9 @@ class SecurityHelper {
      * Verificar token CSRF
      */
     public static function verifyCSRFToken($token) {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
     }
     
