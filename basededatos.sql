@@ -28,6 +28,8 @@ CREATE TABLE imagenes (
     id_imagen INT AUTO_INCREMENT PRIMARY KEY,
     id_categoria INT,
     imagen LONGBLOB,
+    titulo VARCHAR(255),
+    descripcion TEXT,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
 
