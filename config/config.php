@@ -3,6 +3,27 @@
  * Configuración general de la aplicación
  */
 
+// Cargar variables de entorno desde .env
+$envFile = __DIR__ . '/../.env';
+if (file_exists($envFile)) {
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        
+        if (strpos($line, '=') !== false) {
+            list($name, $value) = explode('=', $line, 2);
+            $name = trim($name);
+            $value = trim($value);
+            
+            if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+                putenv(sprintf('%s=%s', $name, $value));
+                $_ENV[$name] = $value;
+                $_SERVER[$name] = $value;
+            }
+        }
+    }
+}
+
 // Configuración de sesión
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_only_cookies', 1);
@@ -13,7 +34,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Configuración de la aplicación
-define('APP_NAME', 'SketchVibes');
+define('APP_NAME', getenv('APP_NAME') ?: 'SketchVibes');
 define('APP_URL', getenv('APP_URL') ?: 'http://localhost/SketchVibes');
 define('UPLOAD_DIR', __DIR__ . '/../uploads/');
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
