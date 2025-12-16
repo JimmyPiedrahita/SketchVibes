@@ -14,7 +14,7 @@ ini_set('display_errors', 1);
 
 // Configuración de la aplicación
 define('APP_NAME', 'SketchVibes');
-define('APP_URL', 'http://localhost/SketchVibes');
+define('APP_URL', getenv('APP_URL') ?: 'http://localhost/SketchVibes');
 define('UPLOAD_DIR', __DIR__ . '/../uploads/');
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
 

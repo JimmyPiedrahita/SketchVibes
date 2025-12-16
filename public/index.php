@@ -22,20 +22,20 @@ ob_start();
                 
                 <div class="d-flex flex-wrap justify-content-center gap-3">
                     <?php if (SessionHelper::isLoggedIn()): ?>
-                        <a href="/SketchVibes/public/home.php" class="btn btn-primary btn-lg">
+                        <a href="<?= APP_URL ?>/home.php" class="btn btn-primary btn-lg">
                             <i class="fas fa-images me-2"></i>Explorar Galería
                         </a>
-                        <a href="/SketchVibes/public/logout.php" class="btn btn-outline-primary btn-lg">
+                        <a href="<?= APP_URL ?>/logout.php" class="btn btn-outline-primary btn-lg">
                             <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
                         </a>
                     <?php else: ?>
-                        <a href="/SketchVibes/public/home.php" class="btn btn-primary btn-lg">
+                        <a href="<?= APP_URL ?>/home.php" class="btn btn-primary btn-lg">
                             <i class="fas fa-images me-2"></i>Explorar Galería
                         </a>
-                        <a href="/SketchVibes/public/login.php" class="btn btn-outline-primary btn-lg">
+                        <a href="<?= APP_URL ?>/login.php" class="btn btn-outline-primary btn-lg">
                             <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
                         </a>
-                        <a href="/SketchVibes/public/register.php" class="btn btn-success btn-lg">
+                        <a href="<?= APP_URL ?>/register.php" class="btn btn-success btn-lg">
                             <i class="fas fa-user-plus me-2"></i>Registrarse
                         </a>
                     <?php endif; ?>
