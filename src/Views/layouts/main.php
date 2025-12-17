@@ -13,8 +13,8 @@
     <?php if (isset($showNavbar) && $showNavbar): ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
             <div class="container">
-                <a class="navbar-brand" href="/SketchVibes/public/index.php">
-                    <img src="img/Logo.svg" alt="SketchVibes" height="40">
+                <a class="navbar-brand" href="/index.php">
+                    <img src="img/logo.svg" alt="SketchVibes" height="40">
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -24,11 +24,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/SketchVibes/public/home.php">Galería</a>
+                            <a class="nav-link" href="/home.php">Galería</a>
                         </li>
                         <?php if (SessionHelper::isAdmin()): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/SketchVibes/public/add-image.php">Agregar Imagen</a>
+                                <a class="nav-link" href="/add-image.php">Agregar Imagen</a>
                             </li>
                         <?php endif; ?>
                     </ul>
@@ -40,15 +40,15 @@
                                     <?= SessionHelper::getCurrentUser()['name'] ?>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/SketchVibes/public/logout.php">Cerrar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="/logout.php">Cerrar Sesión</a></li>
                                 </ul>
                             </li>
                         <?php else: ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/SketchVibes/public/login.php">Iniciar Sesión</a>
+                                <a class="nav-link" href="/login.php">Iniciar Sesión</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/SketchVibes/public/register.php">Registrarse</a>
+                                <a class="nav-link" href="/register.php">Registrarse</a>
                             </li>
                         <?php endif; ?>
                     </ul>

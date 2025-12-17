@@ -66,7 +66,7 @@ class ImageController {
             
             if ($result['success']) {
                 $this->setFlashMessage('success', $result['message']);
-                header('Location: /SketchVibes/public/home.php');
+                header('Location: /home.php');
                 exit;
             } else {
                 $this->setFlashMessage('error', $result['message']);
@@ -85,7 +85,7 @@ class ImageController {
         $image = $this->imageModel->getById($id);
         if (!$image) {
             $this->setFlashMessage('error', 'Imagen no encontrada');
-            header('Location: /SketchVibes/public/home.php');
+            header('Location: /home.php');
             exit;
         }
         
@@ -120,7 +120,7 @@ class ImageController {
             
             if ($result['success']) {
                 $this->setFlashMessage('success', $result['message']);
-                header('Location: /SketchVibes/public/home.php');
+                header('Location: /home.php');
                 exit;
             } else {
                 $this->setFlashMessage('error', $result['message']);
@@ -144,7 +144,7 @@ class ImageController {
             $this->setFlashMessage('error', $result['message']);
         }
         
-        header('Location: /SketchVibes/public/home.php');
+        header('Location: /home.php');
         exit;
     }
     
@@ -222,7 +222,7 @@ class ImageController {
             session_start();
         }
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /SketchVibes/public/login.php');
+            header('Location: /login.php');
             exit;
         }
     }
@@ -234,7 +234,7 @@ class ImageController {
         $this->requireAuth();
         if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
             $this->setFlashMessage('error', 'No tienes permisos para realizar esta acción');
-            header('Location: /SketchVibes/public/home.php');
+            header('Location: /home.php');
             exit;
         }
     }

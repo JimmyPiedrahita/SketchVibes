@@ -80,7 +80,7 @@ SketchVibes/
    - Editar `config/database.php` si es necesario
 
 4. **Acceder a la aplicación**
-   - Navegar a `http://localhost/SketchVibes/public/`
+   - Navegar a `http://localhost/`
 
 ### Credenciales por defecto
 - **Admin**: admin@gmail.com / 12345

@@ -18,11 +18,11 @@ ob_start();
                 <div class="card-body">
                     <?php FlashMessages::display(); ?>
                     
-                    <form action="/SketchVibes/public/edit-image.php?id=<?= $image['id_imagen'] ?>" method="POST" enctype="multipart/form-data">
+                    <form action="/edit-image.php?id=<?= $image['id_imagen'] ?>" method="POST" enctype="multipart/form-data">
                         <!-- Preview de imagen actual -->
                         <div class="mb-3 text-center">
                             <div class="border rounded p-3 bg-light">
-                                <img src="/SketchVibes/public/show-image.php?id=<?= $image['id_imagen'] ?>" 
+                                <img src="/show-image.php?id=<?= $image['id_imagen'] ?>" 
                                      alt="<?= htmlspecialchars($image['titulo'] ?? 'Imagen actual') ?>" 
                                      class="img-fluid rounded" style="max-height: 300px;">
                                 <p class="mt-2 text-muted">Imagen actual</p>
@@ -66,7 +66,7 @@ ob_start();
                         </div>
                         
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="/SketchVibes/public/home.php" class="btn btn-secondary">
+                            <a href="/home.php" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left me-2"></i>Cancelar
                             </a>
                             <button type="submit" class="btn btn-warning text-dark">

@@ -18,7 +18,7 @@ ob_start();
                 <div class="card-body">
                     <?php FlashMessages::display(); ?>
                     
-                    <form action="/SketchVibes/public/add-image.php" method="POST" enctype="multipart/form-data">
+                    <form action="/add-image.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="imagen" class="form-label">Imagen <span class="text-danger">*</span></label>
                             <input type="file" class="form-control" id="imagen" name="imagen" 
@@ -53,7 +53,7 @@ ob_start();
                         </div>
                         
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="/SketchVibes/public/home.php" class="btn btn-secondary">
+                            <a href="/home.php" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left me-2"></i>Cancelar
                             </a>
                             <button type="submit" class="btn btn-primary">

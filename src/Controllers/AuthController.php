@@ -24,7 +24,7 @@ class AuthController {
             
             if ($result['success']) {
                 $this->startSession($result['user'], $result['is_admin']);
-                header('Location: /SketchVibes/public/home.php');
+                header('Location: /home.php');
                 exit;
             } else {
                 $this->setFlashMessage('error', $result['message']);
@@ -52,7 +52,7 @@ class AuthController {
                 
                 if ($result['success']) {
                     $this->setFlashMessage('success', $result['message']);
-                    header('Location: /SketchVibes/public/login.php');
+                    header('Location: /login.php');
                     exit;
                 } else {
                     $this->setFlashMessage('error', $result['message']);
@@ -75,7 +75,7 @@ class AuthController {
             session_start();
         }
         session_destroy();
-        header('Location: /SketchVibes/public/index.php');
+        header('Location: /index.php');
         exit;
     }
     
@@ -87,7 +87,7 @@ class AuthController {
             session_start();
         }
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /SketchVibes/public/login.php');
+            header('Location: /login.php');
             exit;
         }
     }
@@ -98,7 +98,7 @@ class AuthController {
     public function requireAdmin() {
         $this->requireAuth();
         if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-            header('Location: /SketchVibes/public/home.php');
+            header('Location: /home.php');
             exit;
         }
     }

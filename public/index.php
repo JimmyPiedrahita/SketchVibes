@@ -13,7 +13,7 @@ ob_start();
     <div class="container-fluid px-4">
         <div class="row justify-content-center text-center">
             <div class="col-lg-8 col-xl-6">
-                <img src="img/Logo.svg" alt="SketchVibes" class="img-fluid mb-4" style="max-width: 200px;">
+                <img src="img/logo.svg" alt="SketchVibes" class="img-fluid mb-4" style="max-width: 200px;">
                 <h1 class="display-4 text-primary mb-4">SketchVibes</h1>
                 <p class="lead text-dark mb-5">
                     Explora nuestro mundo de creatividad y arte. Descubre dibujos únicos y cautivadores 

@@ -4,7 +4,7 @@ require_once __DIR__ . '/../config/config.php';
 // Verificar autenticación y permisos de administrador
 SessionHelper::init();
 if (!SessionHelper::isLoggedIn()) {
-    header('Location: /SketchVibes/public/login.php');
+    header('Location: /login.php');
     exit;
 }
 

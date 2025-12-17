@@ -15,7 +15,7 @@ ob_start();
             </div>
             <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                 <?php if (SessionHelper::isAdmin()): ?>
-                    <a href="/SketchVibes/public/add-image.php" class="btn btn-primary">
+                    <a href="/add-image.php" class="btn btn-primary">
                         <i class="fas fa-plus me-2"></i>Agregar Imagen
                     </a>
                 <?php endif; ?>
@@ -47,7 +47,7 @@ ob_start();
                 <h4 class="text-muted">No hay imágenes disponibles</h4>
                 <?php if (SessionHelper::isAdmin()): ?>
                     <p class="text-muted">¡Sé el primero en agregar una imagen!</p>
-                    <a href="/SketchVibes/public/add-image.php" class="btn btn-primary">Agregar Imagen</a>
+                    <a href="/add-image.php" class="btn btn-primary">Agregar Imagen</a>
                 <?php endif; ?>
             </div>
         <?php else: ?>
@@ -55,12 +55,12 @@ ob_start();
                 <div class="col-lg-3 col-md-4 col-sm-6 gallery-item" data-category="<?= $image['id_categoria'] ?>">
                     <div class="card h-100 shadow-sm">
                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img src="/SketchVibes/public/show-image.php?id=<?= $image['id_imagen'] ?>" 
+                            <img src="/show-image.php?id=<?= $image['id_imagen'] ?>" 
                                  alt="<?= htmlspecialchars($image['titulo'] ?? 'Imagen') ?>" 
                                  class="card-img-top h-100 lightbox-trigger"
                                  style="object-fit: cover; cursor: pointer;"
                                  data-image-id="<?= $image['id_imagen'] ?>"
-                                 data-image-src="/SketchVibes/public/show-image.php?id=<?= $image['id_imagen'] ?>"
+                                 data-image-src="/show-image.php?id=<?= $image['id_imagen'] ?>"
                                  data-image-title="<?= htmlspecialchars($image['titulo'] ?? 'Sin título') ?>"
                                  data-image-description="<?= htmlspecialchars($image['descripcion'] ?? 'Sin descripción') ?>"
                                  data-image-category="<?= htmlspecialchars($image['categoria_nombre'] ?? 'Sin categoría') ?>">

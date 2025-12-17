@@ -42,16 +42,16 @@ function initImageModal() {
             modalCategory.textContent = imageCategory;
             
             // Actualizar enlaces
-            modalDownloadBtn.href = "/SketchVibes/public/download-image.php?id=" + imageId;
+            modalDownloadBtn.href = "/download-image.php?id=" + imageId;
             
             if (modalEditBtn) {
-                modalEditBtn.href = "/SketchVibes/public/edit-image.php?id=" + imageId;
+                modalEditBtn.href = "/edit-image.php?id=" + imageId;
             }
             
             if (modalDeleteBtn) {
                 modalDeleteBtn.onclick = function() {
                     if (confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
-                        window.location.href = "/SketchVibes/public/delete-image.php?id=" + imageId;
+                        window.location.href = "/delete-image.php?id=" + imageId;
                     }
                 };
             }

@@ -12,8 +12,8 @@ ob_start();
             <div class="card shadow">
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
-                        <a href="/SketchVibes/public/index.php">
-                            <img src="img/Logo.svg" alt="SketchVibes" class="img-fluid" style="max-width: 120px;">
+                        <a href="/index.php">
+                            <img src="img/logo.svg" alt="SketchVibes" class="img-fluid" style="max-width: 120px;">
                         </a>
                         <h2 class="mt-3 text-primary">Iniciar Sesión</h2>
                     </div>
@@ -37,8 +37,8 @@ ob_start();
                     </form>
                     
                     <div class="text-center">
-                        <p class="mb-2">¿No tienes cuenta? <a href="/SketchVibes/public/register.php" class="text-decoration-none">Regístrate aquí</a></p>
-                        <a href="/SketchVibes/public/index.php" class="text-muted">
+                        <p class="mb-2">¿No tienes cuenta? <a href="/register.php" class="text-decoration-none">Regístrate aquí</a></p>
+                        <a href="/index.php" class="text-muted">
                             <i class="fas fa-arrow-left me-1"></i>Volver al inicio
                         </a>
                     </div>

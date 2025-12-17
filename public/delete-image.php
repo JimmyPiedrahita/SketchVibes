@@ -4,7 +4,7 @@ require_once __DIR__ . '/../config/config.php';
 // Verificar autenticación y permisos de administrador
 SessionHelper::init();
 if (!SessionHelper::isLoggedIn()) {
-    header('Location: /SketchVibes/public/login.php');
+    header('Location: /login.php');
     exit;
 }
 
@@ -15,7 +15,7 @@ $id = $_GET['id'] ?? null;
 
 if (!$id) {
     FlashMessages::add('error', 'ID de imagen no proporcionado');
-    header('Location: /SketchVibes/public/home.php');
+    header('Location: /home.php');
     exit;
 }
 
