@@ -136,6 +136,18 @@ class ImageController {
     public function delete($id) {
         $this->requireAdmin();
         
+        // 1. Obtener info de la imagen para saber el nombre del archivo
+        $image = $this->imageModel->getById($id);
+        
+        if ($image) {
+            // 2. Intentar borrar el archivo físico
+            $filepath = UPLOAD_DIR . $image['imagen'];
+            if (file_exists($filepath)) {
+                unlink($filepath);
+            }
+        }
+        
+        // 3. Borrar registro de la BD
         $result = $this->imageModel->delete($id);
         
         if ($result['success']) {
@@ -159,13 +171,21 @@ class ImageController {
             die('Imagen no encontrada');
         }
         
-        $filename = 'sketchvibes_' . $id . '.jpg';
+        $filepath = UPLOAD_DIR . $image['imagen'];
         
+        if (!file_exists($filepath)) {
+            http_response_code(404);
+            die('Archivo físico no encontrado');
+        }
+        
+        $filename = 'sketchvibes_' . $id . '.' . pathinfo($filepath, PATHINFO_EXTENSION);
+        
+        header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Content-Length: ' . strlen($image['imagen']));
+        header('Content-Length: ' . filesize($filepath));
         
-        echo $image['imagen'];
+        readfile($filepath);
         exit;
     }
     
@@ -180,10 +200,23 @@ class ImageController {
             die('Imagen no encontrada');
         }
         
-        header('Content-Type: image/jpeg');
-        header('Cache-Control: public, max-age=86400'); // Cache por 1 día
+        // Ruta completa al archivo
+        $filepath = UPLOAD_DIR . $image['imagen'];
+
+        // Verificar si el archivo físico existe
+        if (!file_exists($filepath)) {
+            http_response_code(404);
+            // Opcional: Redirigir a una imagen "placeholder" por defecto
+            die('Archivo de imagen no encontrado en el servidor');
+        }
+
+        // Obtener tipo MIME y servir
+        $mime = mime_content_type($filepath);
+        header('Content-Type: ' . $mime);
+        header('Content-Length: ' . filesize($filepath));
+        header('Cache-Control: public, max-age=86400'); // Cache 1 día
         
-        echo $image['imagen'];
+        readfile($filepath);
         exit;
     }
     
@@ -207,11 +240,21 @@ class ImageController {
         if (!$imageInfo) {
             return ['success' => false, 'message' => 'El archivo no es una imagen válida'];
         }
+
+        // Guardar archivo en disco
+        // Crear nombre único: time + random + extensión original
+        $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $filename = uniqid('img_', true) . '.' . $extension;
+
+        // Destino final usando la constante UPLOAD_DIR definida en config.php
+        $destination = UPLOAD_DIR . $filename;
         
-        // Leer contenido del archivo
-        $imageData = file_get_contents($file['tmp_name']);
+        if (move_uploaded_file($file['tmp_name'], $destination)) {
+            // Retornamos el NOMBRE del archivo para guardarlo en la BD
+            return ['success' => true, 'data' => $filename];
+        }
         
-        return ['success' => true, 'data' => $imageData];
+        return ['success' => false, 'message' => 'Error al mover el archivo a la carpeta uploads. Verifica permisos.'];
     }
     
     /**

@@ -56,7 +56,7 @@ class Image {
             $stmt = $this->db->prepare($sql);
             
             $stmt->bindParam(':categoria_id', $categoria_id);
-            $stmt->bindParam(':imagen', $imagen_data, PDO::PARAM_LOB);
+            $stmt->bindParam(':imagen', $imagen_data);
             $stmt->bindParam(':titulo', $titulo);
             $stmt->bindParam(':descripcion', $descripcion);
             
@@ -91,7 +91,7 @@ class Image {
             $stmt->bindParam(':descripcion', $descripcion);
             
             if ($imagen_data) {
-                $stmt->bindParam(':imagen', $imagen_data, PDO::PARAM_LOB);
+                $stmt->bindParam(':imagen', $imagen_data);
             }
             
             if ($stmt->execute()) {

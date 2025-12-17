@@ -5,3 +5,9 @@
 Thumbs.db
 .vscode/
 *.log
+
+# Ignorar contenido de uploads pero mantener la carpeta
+/uploads/*
+!/uploads/.gitkeep
+/public/uploads/*
+!/public/uploads/.gitkeep
