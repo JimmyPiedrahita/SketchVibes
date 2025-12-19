@@ -25,17 +25,22 @@ if (file_exists($envFile)) {
 }
 
 // Configuración de sesión
+$lifetime = 31536000;
+ini_set('session.gc_maxlifetime', $lifetime);
+ini_set('session.cookie_lifetime', $lifetime);
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_secure', 0); // Cambiar a 1 en HTTPS
+
+$env = getenv('APP_ENV') ?: 'local';
+ini_set('session.cookie_secure', ($env === 'production' ? 1 : 0));
 
 // Configuración de errores
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Configuración de la aplicación
-define('APP_NAME', getenv('APP_NAME') ?: 'SketchVibes');
-define('APP_URL', getenv('APP_URL') ?: 'http://localhost/SketchVibes');
+define('APP_NAME', getenv('APP_NAME') ?: 'sketchvibes');
+define('APP_URL', getenv('APP_URL') ?: 'http://localhost/sketchvibes');
 define('UPLOAD_DIR', __DIR__ . '/../uploads/');
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
 
