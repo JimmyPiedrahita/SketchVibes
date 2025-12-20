@@ -26,6 +26,13 @@ if (file_exists($envFile)) {
 
 // Configuración de sesión
 $lifetime = 31536000;
+
+$sessionPath = __DIR__ . '/../sessions';
+if (!file_exists($sessionPath)) {
+    // Crea la carpeta si no existe con permisos de escritura
+    mkdir($sessionPath, 0777, true);
+}
+ini_set('session.save_path', $sessionPath);
 ini_set('session.gc_maxlifetime', $lifetime);
 ini_set('session.cookie_lifetime', $lifetime);
 ini_set('session.cookie_httponly', 1);
