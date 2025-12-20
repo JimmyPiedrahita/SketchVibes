@@ -26,11 +26,12 @@ SketchVibes/
 │   ├── Views/           # Vistas
 │   └── Utils/           # Utilidades
 ├── public/              # Archivos públicos
-│   ├── css/            # Estilos
 │   ├── img/            # Imágenes estáticas
-│   ├── *.php           # Puntos de entrada
-│   └── scripts.js      # JavaScript
-└── database_updated.sql # Base de datos mejorada
+│   ├── js/             # JavaScript
+│   │   └── scripts.js
+│   └── *.php           # Puntos de entrada
+├── uploads/             # Directorio de subidas
+└── basededatos.sql      # Script SQL de la base de datos
 ```
 
 ### Seguridad
@@ -61,7 +62,7 @@ SketchVibes/
 
 ### Requisitos
 - PHP 7.4 o superior
-- MySQL 5.7 o superior
+- MySQL 5.7 o superior (o MariaDB)
 - Servidor web (Apache/Nginx)
 
 ### Pasos de instalación
@@ -73,14 +74,24 @@ SketchVibes/
    ```
 
 2. **Configurar la base de datos**
-   - Crear base de datos `bd_sketchvibes`
-   - Importar `basededatos.sql`
+   - Crear una base de datos en tu servidor MySQL (ej. `sketchvibes_prod`).
+   - Importar el archivo `basededatos.sql` en la base de datos creada.
 
-3. **Configurar credenciales**
-   - Editar `config/database.php` si es necesario
+3. **Configurar entorno**
+   - El proyecto utiliza un archivo `.env` para la configuración.
+   - Asegúrate de que el archivo `.env` exista en la raíz y tenga las credenciales correctas:
+     ```ini
+     DB_HOST=localhost
+     DB_PORT=3306
+     DB_NAME=sketchvibes_prod
+     DB_USER=root
+     DB_PASS=
+     ```
+   - Alternativamente, puedes editar `config/database.php` directamente.
 
 4. **Acceder a la aplicación**
-   - Navegar a `http://localhost/`
+   - Si usas XAMPP, coloca la carpeta en `htdocs` y navega a:
+     `http://localhost/sketchvibes/`
 
 ### Credenciales por defecto
 - **Admin**: admin@gmail.com / 12345
